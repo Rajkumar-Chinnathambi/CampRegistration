@@ -1,0 +1,219 @@
+﻿
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background: url('https://wallpapercave.com/wp/wp9764081.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 25px 0px;
+}
+
+.container {
+    width: 70%;
+    margin: auto;
+    padding: 30px 0px;
+    background-color: bisque;
+    position: relative;
+}
+
+.form-container {
+    padding: 0px 25px;
+    background-color: #f6ece1;
+}
+
+.form {
+    padding: 2px 20px;
+    background-color: white;
+}
+
+.heading-box {
+    padding: 15px 0;
+    border-bottom: 2px solid black;
+}
+
+.title {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.heading {
+    margin-bottom: 20px;
+}
+
+.athlete-info-box {
+    padding: 10px 0;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    column-gap: 8px;
+    margin-top: 13px;
+}
+
+.firstName-box, .lasttName-box {
+    grid-column: span 2;
+}
+
+input:not([type=checkbox]) {
+    width: 100%;
+    height: 28px;
+    padding: 4px 5px;
+}
+
+.address-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 15px;
+    margin-top: 13px;
+}
+
+.address-grid .table-head {
+    grid-row: span 3;
+}
+
+.street-box, .zipcode-box {
+    grid-column: span 4;
+}
+
+.city-box, .state-box {
+    grid-column: span 2;
+}
+
+.describe-box {
+    width: 100%;
+    height: 60px;
+}
+
+.describeBox-contianer {
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+}
+
+.dateSign-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.dateSign-box {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+p {
+    font-size: 12px;
+    margin-top: 6px;
+}
+
+h4 {
+    font-size: 16px;
+}
+
+.male-checkbox, .female-checkbox {
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    gap: 8px;
+}
+
+input[type=radio] {
+    width: 20px;
+    height: 20px;
+}
+
+
+
+.genderBox-head {
+    text-align: center;
+}
+
+.logo-box {
+    position: absolute;
+    top: 0;
+    right: 100px;
+    width: 150px;
+    height: 130px;
+    background-color: peru;
+    display: flex;
+    padding-bottom: 15px;
+    justify-content: end;
+    align-items: center;
+    flex-direction: column;
+}
+
+.logo-box h4 {
+    color: white;
+    font-size: 14px;
+}
+
+.logo-box img {
+    width: 60px;
+    height: 70px;
+    margin-bottom: 7px
+}
+
+/*=== Media query for Tabs ===*/
+
+@media only screen and (max-width:600px) {
+    .container {
+        width: 97%;
+    }
+
+    .logo-box {
+        right: 7%;
+        width: 100px;
+        height: 120px;
+    }
+
+    .logo-box h4 {
+        color: white;
+        font-size: 10px;
+    }
+
+    .logo-box img {
+        width: 40px;
+        height: 50px;
+        margin-bottom: 4px
+    }
+
+    .heading {
+        font-size: 22px;
+    }
+
+    .grid h4 {
+        font-size: 14px;
+    }
+}
+
+/*=== Media query for Tabs ===*/
+
+@media only screen and (min-width:601px) and (max-width:1080px) {
+    .container {
+        width: 90%;
+    }
+
+    .logo-box {
+        right: 50px;
+        width: 120px;
+        height: 130px;
+    }
+
+    .heading {
+        font-size: 24px;
+    }
+}
+
+
