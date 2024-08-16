@@ -26,6 +26,7 @@ body {
 .form-container {
     padding: 0px 25px;
     background-color: #f6ece1;
+    padding-bottom:10px;
 }
 
 .form {
@@ -62,11 +63,15 @@ body {
     grid-column: span 2;
 }
 
-input:not([type=checkbox]) {
+input {
     width: 100%;
     height: 28px;
     padding: 4px 5px;
+    border: 2px solid #ccc ;
+    outline:none;
 }
+
+
 
 .address-grid {
     display: grid;
@@ -95,7 +100,7 @@ input:not([type=checkbox]) {
 
 .describeBox-contianer {
     margin-top: 12px;
-    display: flex;
+    display:flex;
     flex-direction: column;
     row-gap: 8px;
 }
@@ -122,11 +127,11 @@ h4 {
     font-size: 16px;
 }
 
-.male-checkbox, .female-checkbox {
+.male-checkbox div, .female-checkbox {
     display: flex;
     justify-content: start;
     align-items: start;
-    gap: 8px;
+    gap:8px;
 }
 
 input[type=radio] {
@@ -164,9 +169,62 @@ input[type=radio] {
     height: 70px;
     margin-bottom: 7px
 }
-
+#submitForm{
+    width:max-content;
+    padding: 5px 15px;
+    background:green;
+    border:none;
+    outline:none;
+    border-radius:3px;
+    color:white;
+}
+.alertBox-container{
+    position:fixed;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    display:none;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.4));
+    
+}
+.alertBox{
+    width:400px;
+    padding:40px;
+    background:#f6ece1;
+    border-radius:10px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    position:relative;
+}
+#msgCancel-icon{
+    position:absolute;
+    right:15px;
+    top:7px;
+    font-size:30px;
+    font-weight:600;
+    cursor:pointer;
+}
+.msg-logo{
+    width:150px;
+    height:150px;
+    text-align:center;
+}
+.msg-logo img{
+    width:100%;
+    height:100%;
+}
+#msg-content{
+    font-size:24px;
+    font-weight:bold;
+    margin-top:10px;
+    text-align:center;
+}
 /*=== Media query for Tabs ===*/
-
 @media only screen and (max-width:600px) {
     .container {
         width: 97%;

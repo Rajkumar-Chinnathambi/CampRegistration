@@ -22,7 +22,8 @@
             <div class="form">
                 <div class="heading-box">
                     <h1 class="heading">Summer Camp Registration</h1>
-                    <p class="title">Athlete Information</p> </div>
+                    <p class="title">Athlete Information</p>
+                </div>
 
                 <div class="athlete-info-box">
 
@@ -31,12 +32,12 @@
                     <div class="athlete-name-grid grid">
                         <h4 class="table-head">Athlete's Name</h4>
                         <div class="firstName-box">
-                            <input type="text" />
-                            <p>First Name</p>
+                            <input style="border: 2px solid #808080; outline: none;" type="text" id="fname" />
+                            <p id="fname-msg">First Name</p>
                         </div>
                         <div class="lasttName-box">
-                            <input type="text" />
-                            <p>Last Name</p>
+                            <input style="border: 2px solid #808080; outline: none;" type="text" id="lname" />
+                            <p id="lname-msg">Last Name</p>
                         </div>
                     </div>
 
@@ -45,16 +46,22 @@
 
                     <div class="dateOfBirth-box grid">
                         <h4 class="table-head">Birth Date</h4>
-                        <div class="month-box">
-                            <input type="number" />
+                        <div class="month-box dob-box">
+                            <select id="month">
+                                <option>Choose Month</option>
+                            </select>
                             <p>Month</p>
                         </div>
-                        <div class="day-box">
-                            <input type="number" />
+                        <div class="day-box dob-box">
+                            <select id="day">
+                                <option>Choose Day</option>
+                            </select>
                             <p>Day</p>
                         </div>
-                        <div class="year-box">
-                            <input type="number" />
+                        <div class="year-boxdob-box">
+                            <select id="year">
+                                <option>Choose Year</option>
+                            </select>
                             <p>Year</p>
                         </div>
                     </div>
@@ -63,16 +70,18 @@
                     <div class="grid">
                         <h4 class="table-head">Grade</h4>
                         <div class="grade-box">
-                            <input type="number" />
+                            <input style="border: 2px solid #808080; outline: none;" type="number" />
                             <p>Example : 4</p>
                         </div>
                         <h4 class="table-head genderBox-head">Gender</h4>
                         <div class="male-checkbox">
-                            <input type="radio" class="gender-checkbox" name="gender"/>
-                            <span class="gender">Male</span>
+                            <div>
+                                <input type="radio" class="gender-checkbox" name="gender" value="male" />
+                                <span class="gender">Male</span>
+                            </div>
                         </div>
                         <div class="female-checkbox">
-                            <input type="radio" class="gender-checkbox" name="gender" />
+                            <input type="radio" class="gender-checkbox" name="gender" value="female" />
                             <span class="gender">Female</span>
                         </div>
                     </div>
@@ -81,19 +90,19 @@
                     <div class="address-grid">
                         <h4 class="table-head">Address</h4>
                         <div class="street-box">
-                            <input type="text" />
+                            <input style="border: 2px solid #808080; outline: none;" type="text" />
                             <p>Street Address</p>
                         </div>
                         <div class="city-box">
-                            <input type="text" />
+                            <input style="border: 2px solid #808080; outline: none;" type="text" />
                             <p>City</p>
                         </div>
                         <div class="state-box">
-                            <input type="text" />
+                            <input style="border: 2px solid #808080; outline: none;" type="text" />
                             <p>State / Province</p>
                         </div>
                         <div class="zipcode-box">
-                            <input type="number" />
+                            <input style="border:2px solid #808080;outline:none;" type="number" />
                             <p>Postal / Zipe Code</p>
                         </div>
                     </div>
@@ -118,16 +127,32 @@
                         <div class="dateSign-box">
                             <h5>Signature</h5>
                             <input type="text" />
-                            <p>Kristine C.Rajkumar</p>
+                            <p id="sign">Your Sign</p>
                         </div>
                     </div>
 
+                    <!--Submit button-->
+
+                    <div>
+                        <input type="button" id="submitForm" value="Submit" />
+                    </div>
                 </div>
+
             </div>
 
             <!--Form end-->
         </div>
 
     </div>
+    <div class="alertBox-container" id="alertBox-container">
+        <div class="alertBox">
+            <span id="msgCancel-icon">x</span>
+            <div class="msg-logo">
+                <img src="https://www.iconshock.com/image/Shine7/General/check_mark" alt="msg logo" id="msgLogo" />
+            </div>
+            <p id="msg-content">Success</p>
+        </div>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
