@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="container">
-        <div class="form-container">
+        <div class="form-container" >
 
             <!--Logo box-->
             <div class="logo-box">
@@ -19,7 +19,7 @@
 
             <!--Form Start-->
 
-            <div class="form">
+            <form id="registrationForm">
                 <div class="heading-box">
                     <h1 class="heading">Summer Camp Registration</h1>
                     <p class="title">Athlete Information</p>
@@ -32,8 +32,8 @@
                     <div class="athlete-name-grid grid">
                         <h4 class="table-head">Athlete's Name</h4>
                         <div class="firstName-box">
-                            <input style="border: 2px solid #808080; outline: none;" type="text" id="fname" />
-                            <p id="fname-msg">First Name</p>
+                            <input style="border: 2px solid #808080; outline: none;" type="text" id="fname" pattern="[A-Za-z]{3,}" />
+                            <p id="fname-msg">First Name </p>
                         </div>
                         <div class="lasttName-box">
                             <input style="border: 2px solid #808080; outline: none;" type="text" id="lname" />
@@ -73,16 +73,21 @@
                             <input style="border: 2px solid #808080; outline: none;" type="number" />
                             <p>Example : 4</p>
                         </div>
-                        <h4 class="table-head genderBox-head">Gender</h4>
-                        <div class="male-checkbox">
-                            <div>
-                                <input type="radio" class="gender-checkbox" name="gender" value="male" />
-                                <span class="gender">Male</span>
+                        <div class="gender-container">
+                            <div class="gender-second-container">
+                                <h4 class="table-head genderBox-head">Gender</h4>
+                                <div class="male-checkbox">
+                                    <div>
+                                        <input type="radio" class="gender-checkbox" name="gender" value="male" />
+                                        <span class="gender">Male</span>
+                                    </div>
+                                </div>
+                                <div class="female-checkbox">
+                                    <input type="radio" class="gender-checkbox" name="gender" value="female" />
+                                    <span class="gender">Female</span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="female-checkbox">
-                            <input type="radio" class="gender-checkbox" name="gender" value="female" />
-                            <span class="gender">Female</span>
+                            <p id="gender-msg"></p>
                         </div>
                     </div>
 
@@ -102,8 +107,8 @@
                             <p>State / Province</p>
                         </div>
                         <div class="zipcode-box">
-                            <input style="border:2px solid #808080;outline:none;" type="number" />
-                            <p>Postal / Zipe Code</p>
+                            <input style="border:2px solid #808080;outline:none;" type="number" minlength="6" maxlength="6" id="zip"/>
+                            <p>Postal / Zipe Code <span id="zip-msg" style="color:red;margin-left:15px"></span></p>
                         </div>
                     </div>
 
@@ -134,11 +139,11 @@
                     <!--Submit button-->
 
                     <div>
-                        <input type="button" id="submitForm" value="Submit" />
+                        <input type="submit" id="submitForm" value="Submit" />
                     </div>
                 </div>
 
-            </div>
+            </form>
 
             <!--Form end-->
         </div>
@@ -154,5 +159,6 @@
         </div>
     </div>
     <script src="script.js"></script>
+    
 </body>
 </html>

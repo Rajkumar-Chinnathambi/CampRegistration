@@ -4,8 +4,10 @@ const fname = document.getElementById('fname');
 const gender = document.querySelectorAll('input[name="gender"]');
 const submitForm = document.getElementById('submitForm');
 const alertBoxContainer = document.getElementById('alertBox-container');
+const registrationForm = document.getElementById('registrationForm');
 
-
+let fnameStatus = false;
+let lnameStatus = false;
 
 // Initialize Month , Day and Year select field
 
@@ -61,20 +63,91 @@ let initailizeDate = () => {
 
 let isInputFill = () => {
     for (let i of allinputs) {
-        i.addEventListener('focusout', () => {
-            if (i.value == '') {
-                i.style.borderColor = 'red';
-                i.setAttribute('placeholder', 'Please Fill the field')
-            }
-            else if (i.value != '') {
-                i.style.borderColor = 'green';
-            }
-            else {
-                i.style.borderColor = 'black';
-            }
-        })
+        if (i.id == "zip") {
+            i.addEventListener("focusout", () => {
+                if (i.value.length != 6) {
+                    document.querySelector(`#zip-msg`).innerText = "Zip can't less than or greater than 6 digit";
+                    i.style.borderColor = 'red';
+                }
+                else {
+                    i.style.borderColor = 'green';
+                }
+            })
+        }
+        else if (i.id == 'fname' || i.id == 'lname') {
+            i.addEventListener('focusout', () => {
+                i.id == 'fname' ? fnameStatus = fnameLnameValidation(i, i.id) : lnameStatus = fnameLnameValidation(i, i.id);
+                
+            })
+        }
+        else {
+
+            i.addEventListener('focusout', () => {
+
+                if (i.value.trim() == '') {
+                    i.style.borderColor = 'red';
+                    i.setAttribute('placeholder', 'Please Fill the field')
+                }
+                else if (i.value != '') {
+                    i.style.borderColor = 'green';
+                }
+                else {
+                    i.style.borderColor = 'black';
+                }
+            })
+        }
     }
 }
+
+// fname and lname validation
+
+function fnameLnameValidation(ifield, fieldname) {
+    let FnameLnameStatus = false;
+    let Value = ifield.value;
+    let displayFieldName = fieldname == "fname" ? "First Name" : "Last Name";
+    if (Value!= '') {
+        if (Value.startsWith(" ") != true) {
+            if (Value.match(/[0-9]/) == null) {
+                ifield.style.borderColor = 'green';
+                fnameLnameErrorDisplay(`${fieldname}-msg`, `${displayFieldName}`, 'black');
+                FnameLnameStatus = true;
+            }
+            else {
+                ifield.style.borderColor = 'red';
+                fnameLnameErrorDisplay(`${fieldname}-msg`, `${displayFieldName} cannot include number`,'red')
+            }
+        }
+        else {
+            ifield.style.borderColor = 'red';
+            fnameLnameErrorDisplay(`${fieldname}-msg`, `${displayFieldName} cannot starts with space`,'red')
+        }
+        
+    }
+    else {
+        ifield.style.borderColor = 'red';
+        fnameLnameErrorDisplay(`${fieldname}-msg`, `${displayFieldName} doesn't empty`,'red');        
+    }
+    return FnameLnameStatus;
+}
+// display firtname and lname error msg 
+
+function fnameLnameErrorDisplay(msgfieldname,msg,color) {
+    let msgInput = document.getElementById(msgfieldname);
+    msgInput.innerText = msg;
+    msgInput.style.color = color;
+}
+
+
+// check date wheather select or not
+function isDateSelected() {
+    if (month.value != 'Choose Month' && day.value != 'Choose Day' && year.value != 'Choose Year') {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
 
 // check gender select or not
 let isGenderChecked = () => {
@@ -85,6 +158,12 @@ let isGenderChecked = () => {
         }
 
     }
+    if(!GenderValue){
+        document.getElementById('gender-msg').innerHTML = "Please Select the gender";
+    }
+    else{
+        document.getElementById('gender-msg').innerHTML = "";
+    }
     return GenderValue;
 
 }
@@ -93,7 +172,7 @@ let isGenderChecked = () => {
 let isAllInputFilled = () => {
     let inputFilled = true;
     for (let i of allinputs) {
-        if (i.value == '') {
+        if (i.value.trim() == '') {
             inputFilled = false;
             i.style.borderColor = 'red';
             i.setAttribute('placeholder', 'Please Fill the field');
@@ -103,14 +182,32 @@ let isAllInputFilled = () => {
 }
 
 //  Form submission
-submitForm.addEventListener('click', () => {
-    if (isAllInputFilled() && isGenderChecked()) {
-        alertBox('Form Submitted Successfully','s');
+submitForm.addEventListener('click', formSubmition);
+
+
+function formSubmition(event) {
+    event.preventDefault();
+    if (isAllInputFilled() && fnameStatus && lnameStatus) {
+        if (isGenderChecked()) {
+            if (isDateSelected()) {
+                alertBox('Form Submitted Successfully', 's');
+                registrationForm.reset();
+            }
+            else {
+                alertBox("Please Select Date..", 'w')
+            }
+        }
+        else {
+            alertBox("Please Select Gender..", 'w');
+            isGenderChecked();
+        }
+
     }
     else {
-        alertBox("Please Select All the Fields..",'w')
+        alertBox("Please Select All the Fields..", 'w');
+
     }
-})
+}
 
 // Alert Box function to all mode ( error, success , warning )
 function alertBox(msg, type) {
@@ -143,4 +240,14 @@ function initializeAllFunction() {
 }
 initializeAllFunction()
 
- 
+// input value and lenghth checking.....
+function inputValueAndLengthValidation(field, minlen, maxlen, pattern = null) {
+    let value = field.value.trim();
+    if (value != '' && value.length >= minlen && value.length <= maxlen) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
